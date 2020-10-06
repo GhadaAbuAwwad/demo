@@ -1,0 +1,6 @@
+<form action="{% url 'polls:addQues' %}" method="post">
+    {% csrf_token %}
+<label> Please Type you'r Question</label><br>
+  <input type="text" id="newques" name="newques" required="true"><br><br>
+     <input type="submit" value="Add">
+    </form>
