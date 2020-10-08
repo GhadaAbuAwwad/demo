@@ -1,0 +1,12 @@
+<h1>{{ post.post_title }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form >
+
+    <output> {{ post.post_content }} </output>
+    <br>
+    <output> {{ post.pub_date }}</output>
+    <br>
+    <br>
+</form>
