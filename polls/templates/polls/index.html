@@ -1,4 +1,14 @@
-{% if latest_question_list %}
+{% load static %}
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'polls/css/styles.css' %}">
+</head>
+<body>
+
+<form >
+    <img src="{% static 'polls/img/images.jpg' %}" alt="My image">
+    {% if latest_question_list %}
     <ul>
         {% for question in latest_question_list %}
             <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
@@ -10,3 +20,9 @@
 <br>
 <br>
  <li><a href="/polls/addQues/">Add New Question</a></li>
+    </div>
+</form>
+</body>
+</html>
+
+
