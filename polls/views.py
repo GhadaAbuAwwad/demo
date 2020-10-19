@@ -2,7 +2,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
-
+from rest_framework import viewsets
+from rest_framework import permissions
+from .serializers import QuestionSerializer
 from .models import Choice, Question
 #
 # def index(request):
@@ -32,6 +34,13 @@ class IndexView(generic.ListView):
         """Return the last five published questions."""
         return Question.objects.order_by('-pub_date')[:5]
 
+class QuestionViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows question to be viewed or edited.
+    """
+    queryset = Question.objects.all().order_by('-pub_date')
+    serializer_class = QuestionSerializer
+    permission_classes = [permissions.AllowAny]
 
 class DetailView(generic.DetailView):
     model = Question
